@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/chat.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/index.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <h1 class="header__title">
+          URDU<span class="header__light">chatbot</span>
+        </h1>
+      </div>
+      <div class="header__menu">
+        <nav id="navbar" class="header__nav collapse">
+          <ul class="header__elenco">
+            <li class="header__el header__el--blue">
+              <a
+                href="{{ url_for('home') }}"
+                class="btn btn--white"
+                style="text-decoration: none"
+                >Home →</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="chat-container">
+      <div id="chat-display"></div>
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button id="send-button">Send</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const chatDisplay = document.getElementById("chat-display");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+
+        sendButton.addEventListener("click", function () {
+          sendMessage();
+        });
+
+        userInput.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            sendMessage();
+          }
+        });
+
+        function sendMessage() {
+          const message = userInput.value.trim();
+          if (message !== "") {
+            displayUserMessage(message);
+            sendRequestToBackend(message);
+            userInput.value = "";
+          }
+        }
+
+        function displayUserMessage(message) {
+          const userMessage = document.createElement("div");
+          userMessage.className = "message user";
+          userMessage.innerHTML = `<span class="message-text">${message}</span>`;
+          chatDisplay.appendChild(userMessage);
+          chatDisplay.scrollTop = chatDisplay.scrollHeight;
+        }
+
+        function displayBotMessage(message) {
+          const botMessage = document.createElement("div");
+          botMessage.className = "message bot";
+          botMessage.innerHTML = `<span class="message-text">${message}</span>`;
+          chatDisplay.appendChild(botMessage);
+          chatDisplay.scrollTop = chatDisplay.scrollHeight;
+        }
+
+        function sendRequestToBackend(message) {
+          const request = new XMLHttpRequest();
+          request.open("POST", "/chat", true);
+          request.setRequestHeader("Content-Type", "application/json");
+
+          request.onload = function () {
+            if (request.status >= 200 && request.status < 400) {
+              const response = JSON.parse(request.responseText);
+              displayBotMessage(response.response);
+            } else {
+              console.error("Request failed. Status:", request.status);
+            }
+          };
+
+          request.onerror = function () {
+            console.error("Request failed");
+          };
+
+          const data = { message: message };
+          request.send(JSON.stringify(data));
+        }
+      });
+    </script>
+  </body>
+</html>

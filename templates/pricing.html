@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pricing</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/pricing.css') }}"
+    />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+  </head>
+  <body>
+    <div class="container mb-5 mt-5">
+      <div class="pricing card-deck flex-column flex-md-row mb-3">
+        <div class="card card-pricing text-center px-3 mb-4">
+          <span
+            class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"
+          >
+            Starter
+          </span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1
+              class="h1 font-weight-normal text-primary text-center mb-0"
+              data-pricing-value="15"
+            >
+              $<span class="price">3</span>
+              <span class="h6 text-muted ml-2">/ per month</span>
+            </h1>
+          </div>
+          <div class="card-body pt-0">
+            <ul class="list-unstyled mb-4">
+              <li>Up to 5 users</li>
+              <li>Monthly updates</li>
+              <li>Free cancellation</li>
+            </ul>
+            <button type="button" class="btn btn-outline-primary mb-3">
+              Purchase now
+            </button>
+          </div>
+        </div>
+        <div class="card card-pricing text-center px-3 mb-4">
+          <span
+            class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"
+          >
+            Professional
+          </span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1
+              class="h1 font-weight-normal text-primary text-center mb-0"
+              data-pricing-value="15"
+            >
+              $<span class="price">6</span>
+              <span class="h6 text-muted ml-2">/ per month</span>
+            </h1>
+          </div>
+          <div class="card-body pt-0">
+            <ul class="list-unstyled mb-4">
+              <li>Up to 10 users</li>
+              <li>Monthly updates</li>
+              <li>Free cancellation</li>
+            </ul>
+            <button type="button" class="btn btn-outline-primary mb-3">
+              Purchase now
+            </button>
+          </div>
+        </div>
+        <div class="card card-pricing text-center px-3 mb-4">
+          <span
+            class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"
+          >
+            Business
+          </span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1
+              class="h1 font-weight-normal text-primary text-center mb-0"
+              data-pricing-value="45"
+            >
+              $<span class="price">9</span>
+              <span class="h6 text-muted ml-2">/ per month</span>
+            </h1>
+          </div>
+          <div class="card-body pt-0">
+            <ul class="list-unstyled mb-4">
+              <li>Up to 15 users</li>
+              <li>Access to everything</li>
+              <li>Monthly updates</li>
+            </ul>
+            <button type="button" class="btn btn-outline-primary mb-3">
+                Purchase now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sticky" style="background-color: #007bfc">
+      <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5"
+      >
+        <div class="text-white mb-3 mb-md-0">
+          Copyright © 2023. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</html>
